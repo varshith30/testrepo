@@ -1,0 +1,10 @@
+# command to upload file from local to storage account.
+
+AzCopy /Source:C:\Users\vkasire1\Desktop /Dest:https://stgacctedca.blob.core.windows.net/webstorage /DestKey:Ee5zrBHUFv/Ut0U/TJGsWx/u8yeRFDfUMh4VTVSDWFkPznVKOIK9w1oRZoeWHj/QvhyZkbSjVYaVTtIAjTHdrg== /Pattern:"CSharpGuitarBugs.zip"
+
+# custom script file named as pwshell.ps1
+
+AzCopy /Source:C:\Users\vkasire1\Desktop\newwebsite /Dest:https://stgacctedca.blob.core.windows.net/webstorage /DestKey:ggnLxwfuvB//L0ZJdQCxnx4zXN5uaqnyFkkKZ/nT2FmqD450H8p0lRKShO+kMwEq95fCRWdleZZcSfeXHhHwJQ== /Pattern:"pwshellhtml1.ps1"
+
+# command top move files from storage to webvm. VMExtension 
+az vm extension set -n CustomScriptExtension --publisher Microsoft.Compute --version 1.9 --vm-name edca-web-vmdk401pp0 --resource-group vkasire3-01 --settings "{'fileUris': ['https://edcawebdata0dk401pp0.blob.core.windows.net/web/pwshellhtml1.ps1','https://edcawebdata0dk401pp0.blob.core.windows.net/web/testhtmlpage.html'],'commandToExecute':'powershell -ExecutionPolicy Unrestricted -File pwshellhtml1.ps1'}" --protected-settings "{'storageAccountName': 'edcawebdata0dk401pp0','storageAccountKey': 'x4uQeIGOllA2B/gnLTA8uLz9qCZi8VIs8/+dHO5MOkp4aO9lOcLRYbBKqGVrABWyCNTm16LhHwkFYuFrshDBwQ=='}"
